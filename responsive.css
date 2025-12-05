@@ -1,0 +1,267 @@
+/* ================================================= */
+/* MEDIA QUERIES PARA RESPONSIVIDADE (MOBILE/TABLET) */
+/* ================================================= */
+
+/* Regras gerais de layout fluido para HOME */
+.imagem_home{
+    width: 50vw;
+    max-width: 600px;
+}
+.aba_home h1{
+    font-size: clamp(24px, 3vw, 40px); /* Fonte responsiva com limites */
+}
+.aba_home p {
+    font-size: clamp(14px, 1.5vw, 20px);
+}
+
+/* ================================== */
+/* 900px: Ajustes para Tablets e Desktops Menores */
+/* ================================== */
+
+@media (max-width: 900px) {
+
+    /* NAV BAR */
+    nav .nav_bar {
+        padding: 0 15px; /* Menos padding lateral */
+    }
+    
+    nav .nav_coisas {
+        gap: 15px;
+        font-size: 16px;
+    }
+    
+    /* FICHÁRIO (Carrossel 1) - Ajuste de espaçamento dos itens laterais */
+    .esquerda {
+        transform: translate(-35vw) scale(0.85); /* Reduz um pouco o deslocamento */
+    }
+    .direita {
+        transform: translate(35vw) scale(0.85);
+    }
+}
+
+
+/* ================================== */
+/* 768px: Layout de Tablet Vertical/Mobile Horizontal (MENU HAMBÚRGUER) */
+/* ================================== */
+
+@media (max-width: 768px) {
+
+    /* NAV BAR (Menu Hambúrguer) */
+    nav .nav_bar {
+        justify-content: space-between;
+    }
+
+    /* Oculta os links do menu principal */
+    nav .nav_bar > div {
+        display: none; 
+    }
+    
+    /* Mostra o ícone do menu hambúrguer */
+    .toggle_menu {
+        display: block; 
+    }
+    
+    /* Estilo do menu aberto (cria o painel lateral) */
+    .nav_bar .nav_coisas {
+        position: fixed;
+        top: 70px; /* Abaixo da nav bar */
+        right: 0;
+        width: 250px;
+        height: calc(100vh - 70px);
+        background-color: #f8f8f8; /* Fundo do menu móvel */
+        box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+        transform: translateX(100%); /* Esconde fora da tela */
+        transition: transform 0.3s ease-out;
+        z-index: 9999;
+        display: flex; /* Garante que o painel seja um flex container */
+        margin: 0;
+    }
+
+    /* Estilo do menu quando "aberto" pela classe JS */
+    .nav_bar .nav_coisas.open {
+        transform: translateX(0); /* Mostra na tela */
+    }
+
+    /* Ajuste para que os links não tenham a linha */
+    .nav_coisas li a::after {
+        display: none;
+    }
+    
+    .nav_coisas li a:hover::after {
+        width: 0%;
+    }
+
+
+    /* HOME */
+    .imagem_home{
+        width: 70vw;
+    }
+    .aba_home h1{
+        font-size: 6vw;
+    }
+    .aba_home p {
+        font-size: 4vw;
+    }
+
+    /* SOBRE (Empilha colunas) */
+    .aba_sobre {
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+        text-align: center; /* Centraliza o texto no modo coluna */
+    }
+    .informacoes_odh {
+        max-width: 100%;
+        min-width: unset;
+        text-align: left; /* Mantém o parágrafo justificado (mas pode ajustar se quiser) */
+        padding: 0 10px;
+    }
+    .informacoes_odh h1 {
+        text-align: center;
+    }
+    .odh_local {
+        margin-right: 0;
+        padding: 0 10px;
+    }
+    
+    /* FICHÁRIO (Carrossel 1) - Oculta itens laterais e centraliza o ativo */
+    .carrossel_container {
+        height: 600px;
+        margin-top: 50px;
+    }
+
+    .carrossel {
+        margin-top: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .carrossel_item {
+        transform: translate(0) scale(0.9);
+    }
+    .esquerda, .direita {
+        opacity: 0; /* Oculta laterais completamente */
+        transform: translate(0) scale(0.8);
+    }
+    .ativo {
+        transform: translateX(0) scale(1); /* Centraliza o item ativo */
+    }
+    .card img {
+        width: 250px;
+        height: 350px;
+    }
+    .card_texto {
+        width: 250px;
+        font-size: 13px;
+    }
+    .carrossel_btn {
+        top: 35%; /* Ajuste vertical do botão */
+        margin-top: 0;
+    }
+    .esquerda_btn {
+        left: 5px; /* Mais perto da borda */
+    }
+    .direita_btn {
+        right: 5px; /* Mais perto da borda */
+    }
+    
+    /* SOLICITAÇÕES (Carrossel 2) */
+    .form_caixa {
+        max-width: 95%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .titulo_solicitacao h2 {
+        font-size: 25px;
+    }
+
+    /* Ajuste do carrossel 2 para ocupar mais espaço */
+    .card_heroi.esquerda2 {
+        transform: translate(calc(-50% - 130px), -50%) scale(0.7);
+    }
+    .card_heroi.direita2 {
+        transform: translate(calc(-50% + 130px), -50%) scale(0.7);
+    }
+    .card_heroi img {
+        width: 120px;
+        height: 200px;
+    }
+    
+    .esquerda2_btn {
+        left: 0px;
+    }
+    .direita2_btn {
+        right: 0px;
+    }
+    
+    /* AVALIAÇÕES */
+    .aba_avaliacoes {
+        padding: 40px 10px;
+    }
+    .grafico_box {
+        max-width: 100%;
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+    }
+    .avaliacoes_container {
+        grid-template-columns: 1fr; /* Força empilhamento em 1 coluna */
+        gap: 15px;
+        margin-left: 0;
+        padding: 0 10px;
+    }
+    .avaliacao_card {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    footer {
+        padding: 10px;
+        text-align: center;
+    }
+
+}
+
+
+/* ================================== */
+/* 480px: Layout para Celular */
+/* ================================== */
+
+@media (max-width: 480px) {
+    
+    /* HOME */
+    .imagem_home{
+        width: 80vw;
+        margin-top: 0px;
+        margin-bottom: -50px;
+    }
+    .aba_home h1{
+        font-size: 7vw;
+        margin-top: -30px;
+    }
+    
+    /* FICHÁRIO (Carrossel 1) - Garante que apenas o centro seja visível */
+    .esquerda, .direita {
+        opacity: 0; 
+    }
+    .carrossel_btn {
+        top: 30%; /* Ajuste vertical mais alto */
+        font-size: 30px;
+    }
+    
+    /* SOLICITAÇÕES (Carrossel 2) - Oculta os cards laterais para focar no centro */
+    .card_heroi.esquerda2,
+    .card_heroi.direita2 {
+        opacity: 0; 
+    }
+    .esquerda2_btn {
+        left: 10px;
+    }
+    .direita2_btn {
+        right: 10px;
+    }
+    
+}
